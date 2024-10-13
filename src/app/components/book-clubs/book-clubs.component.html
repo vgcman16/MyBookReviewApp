@@ -1,0 +1,23 @@
+<ActionBar title="Book Clubs"></ActionBar>
+
+<ScrollView>
+  <StackLayout class="p-4">
+    <Label text="Available Book Clubs" class="text-xl font-bold mb-2"></Label>
+    <ListView [items]="bookClubs" class="mb-4">
+      <ng-template let-club="item">
+        <GridLayout rows="auto, auto" columns="*, auto" class="mb-2 p-2 border-bottom">
+          <Label [text]="club.name" class="font-bold" row="0" col="0"></Label>
+          <Label [text]="club.description" row="1" col="0"></Label>
+          <Button text="Join" (tap)="joinBookClub(club.id)" row="0" col="1" rowSpan="2" class="btn btn-primary"></Button>
+        </GridLayout>
+      </ng-template>
+    </ListView>
+
+    <Label text="Create New Book Club" class="text-xl font-bold mb-2"></Label>
+    <TextField [(ngModel)]="newClub.name" hint="Club Name" class="mb-2"></TextField>
+    <TextView [(ngModel)]="newClub.description" hint="Club Description" class="mb-2"></TextView>
+    <TextField [(ngModel)]="newClub.currentBook" hint="Current Book" class="mb-2"></TextField>
+    <TextField [(ngModel)]="newClub.meetingSchedule" hint="Meeting Schedule" class="mb-2"></TextField>
+    <Button text="Create Club" (tap)="createBookClub()" class="btn btn-primary"></Button>
+  </StackLayout>
+</ScrollView>

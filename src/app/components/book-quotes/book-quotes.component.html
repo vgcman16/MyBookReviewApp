@@ -1,0 +1,21 @@
+<ActionBar title="Book Quotes"></ActionBar>
+
+<GridLayout rows="auto, *">
+  <StackLayout row="0" class="p-4">
+    <TextField [(ngModel)]="newQuote" hint="Enter a quote" class="mb-2"></TextField>
+    <TextField [(ngModel)]="newBook" hint="Book title" class="mb-2"></TextField>
+    <Button text="Add Quote" (tap)="addQuote()" class="btn btn-primary"></Button>
+  </StackLayout>
+
+  <ListView [items]="quotes" row="1" class="list-group">
+    <ng-template let-quote="item">
+      <GridLayout columns="*, auto" class="list-group-item">
+        <StackLayout col="0">
+          <Label [text]="quote.text" textWrap="true" class="h3"></Label>
+          <Label [text]="'- ' + quote.book" class="text-muted"></Label>
+        </StackLayout>
+        <Button text="Share" (tap)="shareQuote(quote)" col="1" class="btn btn-outline"></Button>
+      </GridLayout>
+    </ng-template>
+  </ListView>
+</GridLayout>

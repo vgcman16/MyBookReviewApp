@@ -1,0 +1,29 @@
+<ActionBar title="Book Search">
+  <ActionItem (tap)="goToScanner()" ios.position="right" android.position="actionBar">
+    <Label text="Scan" class="action-item"></Label>
+  </ActionItem>
+</ActionBar>
+
+<GridLayout rows="auto, auto, *">
+  <StackLayout row="0" class="p-4">
+    <TextField [(ngModel)]="searchQuery" hint="Search books..." class="mb-2" returnKeyType="search" (returnPress)="searchBooks()"></TextField>
+    <Button text="Search" (tap)="searchBooks()" class="btn btn-primary"></Button>
+  </StackLayout>
+
+  <Label row="1" *ngIf="isOffline" text="You are offline. Showing cached results." class="text-center text-warning p-2"></Label>
+
+  <ListView row="2" [items]="books" (itemTap)="onItemTap($event)" class="list-group">
+    <ng-template let-book="item">
+      <GridLayout columns="auto, *" class="list-group-item">
+        <Image [src]="book.thumbnail" width="60" height="90" class="m-r-10" col="0"></Image>
+        <StackLayout col="1">
+          <Label [text]="book.title" class="list-group-item-heading"></Label>
+          <Label [text]="'by ' + book.author" class="list-group-item-text"></Label>
+          <Label [text]="'Rating: ' + (book.averageRating || 'N/A')" class="list-group-item-text"></Label>
+        </StackLayout>
+      </GridLayout>
+    </ng-template>
+  </ListView>
+
+  <ActivityIndicator [busy]="isLoading" [visibility]="isLoading ? 'visible' : 'collapse'" row="2" horizontalAlignment="center" verticalAlignment="center"></ActivityIndicator>
+</GridLayout>

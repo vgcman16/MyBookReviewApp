@@ -1,0 +1,11 @@
+<ActionBar [title]="book.title"></ActionBar>
+
+<ScrollView>
+  <StackLayout class="p-4">
+    <Label [text]="book.title" class="text-2xl font-bold"></Label>
+    <Label [text]="'by ' + book.author" class="text-lg text-gray-500 mb-2"></Label>
+    <Label [text]="'Rating: ' + book.rating + '/5'" class="text-lg mb-4"></Label>
+    <Label text="Review:" class="text-xl font-bold mb-2"></Label>
+    <Label [text]="book.review" class="text-base" textWrap="true"></Label>
+  </StackLayout>
+</ScrollView>

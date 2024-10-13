@@ -1,0 +1,7 @@
+<ActionBar [title]="'Reading Progress: ' + book?.title"></ActionBar>
+
+<StackLayout class="p-4">
+  <Label [text]="'Current Progress: ' + progress + '%'" class="text-lg mb-2"></Label>
+  <Slider [(ngModel)]="progress" minValue="0" maxValue="100" class="mb-4"></Slider>
+  <Button text="Update Progress" (tap)="updateProgress()" class="btn btn-primary"></Button>
+</StackLayout>

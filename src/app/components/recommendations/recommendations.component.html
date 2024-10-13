@@ -1,0 +1,18 @@
+<ActionBar title="Recommended Books"></ActionBar>
+
+<GridLayout>
+  <ListView [items]="recommendations" (itemTap)="onItemTap($event)" class="list-group">
+    <ng-template let-book="item">
+      <GridLayout columns="auto, *, auto" class="list-group-item p-2">
+        <Image [src]="book.thumbnail" width="60" height="90" class="m-r-10" col="0"></Image>
+        <StackLayout col="1">
+          <Label [text]="book.title" class="font-weight-bold"></Label>
+          <Label [text]="'by ' + book.author" class="text-muted"></Label>
+          <Label [text]="'Rating: ' + (book.averageRating || 'N/A')" class="text-sm"></Label>
+        </StackLayout>
+        <Button col="2" text="Add" (tap)="addToReadingList(book)" class="btn btn-outline btn-rounded-sm"></Button>
+      </GridLayout>
+    </ng-template>
+  </ListView>
+  <ActivityIndicator [busy]="isLoading" [visibility]="isLoading ? 'visible' : 'collapse'" horizontalAlignment="center" verticalAlignment="center"></ActivityIndicator>
+</GridLayout>

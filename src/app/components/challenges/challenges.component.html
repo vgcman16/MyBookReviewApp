@@ -1,0 +1,28 @@
+<ActionBar title="Reading Challenges"></ActionBar>
+
+<ScrollView>
+  <StackLayout class="p-4">
+    <Label text="Current Challenges" class="text-xl font-bold mb-2"></Label>
+    <ListView [items]="challenges" class="mb-4">
+      <ng-template let-challenge="item">
+        <GridLayout rows="auto, auto, auto" columns="*, auto" class="mb-2 p-2 border-bottom">
+          <Label [text]="challenge.title" class="font-bold" row="0" col="0"></Label>
+          <Label [text]="challenge.description" row="1" col="0"></Label>
+          <StackLayout row="2" col="0">
+            <Progress [value]="challenge.currentProgress" [maxValue]="challenge.goal"></Progress>
+            <Label [text]="challenge.currentProgress + ' / ' + challenge.goal"></Label>
+          </StackLayout>
+          <Button text="Update" (tap)="updateProgress(challenge)" row="0" col="1" rowSpan="3" class="btn btn-primary"></Button>
+        </GridLayout>
+      </ng-template>
+    </ListView>
+
+    <Label text="Create New Challenge" class="text-xl font-bold mb-2"></Label>
+    <TextField [(ngModel)]="newChallenge.title" hint="Challenge Title" class="mb-2"></TextField>
+    <TextView [(ngModel)]="newChallenge.description" hint="Challenge Description" class="mb-2"></TextView>
+    <TextField [(ngModel)]="newChallenge.goal" hint="Goal (e.g., number of books)" keyboardType="number" class="mb-2"></TextField>
+    <DatePicker [(ngModel)]="newChallenge.startDate" hint="Start Date" class="mb-2"></DatePicker>
+    <DatePicker [(ngModel)]="newChallenge.endDate" hint="End Date" class="mb-2"></DatePicker>
+    <Button text="Add Challenge" (tap)="addChallenge()" class="btn btn-primary"></Button>
+  </StackLayout>
+</ScrollView>

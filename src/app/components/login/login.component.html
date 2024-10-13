@@ -1,0 +1,9 @@
+<ActionBar title="Login"></ActionBar>
+
+<StackLayout class="p-4">
+  <TextField [(ngModel)]="username" hint="Username" class="mb-2"></TextField>
+  <TextField [(ngModel)]="password" hint="Password" secure="true" class="mb-4"></TextField>
+  <Button text="Login" (tap)="login()" [isEnabled]="!isLoading" class="btn btn-primary mb-2"></Button>
+  <ActivityIndicator [busy]="isLoading" class="mb-2"></ActivityIndicator>
+  <Label [text]="errorMessage" *ngIf="errorMessage" class="text-danger"></Label>
+</StackLayout>

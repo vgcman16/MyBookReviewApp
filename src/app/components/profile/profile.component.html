@@ -1,0 +1,39 @@
+<ActionBar title="Profile"></ActionBar>
+
+<ScrollView>
+  <StackLayout class="p-4">
+    <Label [text]="'Username: ' + user.username" class="text-lg mb-2"></Label>
+    <Label [text]="'Email: ' + user.email" class="text-lg mb-4"></Label>
+
+    <Label [text]="'Points: ' + userPoints" class="text-xl font-bold mb-4"></Label>
+
+    <Label text="Achievements" class="text-xl font-bold mb-2"></Label>
+    <ListView [items]="achievements" class="mb-4">
+      <ng-template let-achievement="item">
+        <GridLayout columns="*, auto" class="p-2" [opacity]="achievement.isUnlocked ? 1 : 0.5">
+          <StackLayout col="0">
+            <Label [text]="achievement.title" class="font-bold"></Label>
+            <Label [text]="achievement.description" class="text-sm"></Label>
+          </StackLayout>
+          <Label [text]="achievement.points + ' pts'" col="1" class="text-right"></Label>
+        </GridLayout>
+      </ng-template>
+    </ListView>
+
+    <Label text="Favorite Books" class="text-xl font-bold mb-2"></Label>
+    <ListView [items]="favoriteBooks" class="mb-4">
+      <ng-template let-book="item">
+        <Label [text]="book.title" class="p-2"></Label>
+      </ng-template>
+    </ListView>
+
+    <Label text="Reading List" class="text-xl font-bold mb-2"></Label>
+    <ListView [items]="readingList" class="mb-4">
+      <ng-template let-book="item">
+        <Label [text]="book.title" class="p-2"></Label>
+      </ng-template>
+    </ListView>
+
+    <Button text="Logout" (tap)="logout()" class="btn btn-primary"></Button>
+  </StackLayout>
+</ScrollView>

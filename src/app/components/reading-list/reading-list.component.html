@@ -1,0 +1,13 @@
+<ActionBar title="Reading List"></ActionBar>
+
+<ListView [items]="readingList">
+  <ng-template let-book="item">
+    <GridLayout columns="*, auto" class="p-4">
+      <StackLayout col="0">
+        <Label [text]="book.title" class="text-lg font-bold"></Label>
+        <Label [text]="'by ' + book.author" class="text-sm text-gray-500"></Label>
+      </StackLayout>
+      <Button col="1" text="Remove" (tap)="removeFromReadingList(book)" class="btn btn-outline"></Button>
+    </GridLayout>
+  </ng-template>
+</ListView>

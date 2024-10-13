@@ -1,0 +1,13 @@
+<ActionBar title="Book Reviews"></ActionBar>
+
+<GridLayout>
+  <ListView [items]="books">
+    <ng-template let-book="item">
+      <StackLayout [nsRouterLink]="['/book', book.id]" class="p-4">
+        <Label [text]="book.title" class="text-lg font-bold"></Label>
+        <Label [text]="'by ' + book.author" class="text-sm text-gray-500"></Label>
+        <Label [text]="'Rating: ' + book.rating + '/5'" class="text-sm"></Label>
+      </StackLayout>
+    </ng-template>
+  </ListView>
+</GridLayout>

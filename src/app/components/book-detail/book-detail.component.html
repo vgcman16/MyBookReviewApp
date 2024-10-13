@@ -1,0 +1,39 @@
+<ActionBar [title]="book?.title">
+  <ActionItem (tap)="shareBook()" ios.position="right" android.position="actionBar">
+    <Label text="Share" class="action-item"></Label>
+  </ActionItem>
+</ActionBar>
+
+<ScrollView>
+  <StackLayout class="p-4">
+    <Label *ngIf="isOffline" text="You are offline. Some features may be limited." class="text-center text-warning p-2"></Label>
+
+    <Image [src]="book?.thumbnail" width="120" height="180" class="mb-4"></Image>
+    <Label [text]="book?.title" class="text-2xl font-bold"></Label>
+    <Label [text]="'by ' + book?.author" class="text-lg text-gray-500 mb-2"></Label>
+    <Label [text]="'Average Rating: ' + (book?.averageRating || 'N/A')" class="text-lg mb-2"></Label>
+    <Label [text]="'Categories: ' + (book?.categories?.join(', ') || 'N/A')" class="text-sm mb-2"></Label>
+    <Label [text]="'Published: ' + (book?.publishedDate || 'N/A')" class="text-sm mb-4"></Label>
+    <Label [text]="book?.description" class="text-base mb-4" textWrap="true"></Label>
+
+    <Button [text]="isInFavorites ? 'Remove from Favorites' : 'Add to Favorites'" (tap)="toggleFavorite()" class="btn btn-outline mb-2"></Button>
+    <Button [text]="isInReadingList ? 'Remove from Reading List' : 'Add to Reading List'" (tap)="toggleReadingList()" class="btn btn-outline mb-2"></Button>
+    <Button text="Update Reading Progress" (tap)="goToReadingProgress()" class="btn btn-primary mb-4"></Button>
+
+    <Label text="User Reviews" class="text-xl font-bold mb-2"></Label>
+    <ListView [items]="reviews" class="mb-4">
+      <ng-template let-review="item">
+        <StackLayout class="p-2">
+          <Label [text]="'User: ' + review.userId" class="font-bold"></Label>
+          <Label [text]="'Rating: ' + review.userRating + '/5'"></Label>
+          <Label [text]="review.userReview" textWrap="true"></Label>
+        </StackLayout>
+      </ng-template>
+    </ListView>
+
+    <Label text="Add Your Review" class="text-xl font-bold mb-2"></Label>
+    <TextField [(ngModel)]="userRating" hint="Your rating (1-5)" keyboardType="number" class="mb-2"></TextField>
+    <TextView [(ngModel)]="userReview" hint="Your review" class="mb-2"></TextView>
+    <Button text="Submit Review" (tap)="submitReview()" class="btn btn-primary"></Button>
+  </StackLayout>
+</ScrollView>

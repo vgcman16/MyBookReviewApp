@@ -1,0 +1,33 @@
+<ActionBar title="Reading Insights"></ActionBar>
+
+<ScrollView>
+  <StackLayout class="p-4">
+    <Label text="Your Reading Stats" class="text-xl font-bold mb-4"></Label>
+    <GridLayout rows="auto, auto, auto, auto" columns="*, *" class="mb-4">
+      <Label text="Books Read:" class="font-bold" row="0" col="0"></Label>
+      <Label [text]="readingStats?.booksRead" row="0" col="1"></Label>
+      
+      <Label text="Total Pages:" class="font-bold" row="1" col="0"></Label>
+      <Label [text]="readingStats?.totalPages" row="1" col="1"></Label>
+      
+      <Label text="Average Rating:" class="font-bold" row="2" col="0"></Label>
+      <Label [text]="readingStats?.averageRating" row="2" col="1"></Label>
+      
+      <Label text="Favorite Genre:" class="font-bold" row="3" col="0"></Label>
+      <Label [text]="readingStats?.favoriteGenre" row="3" col="1"></Label>
+    </GridLayout>
+    
+    <Label text="Monthly Reading Progress" class="text-xl font-bold mb-2"></Label>
+    <GridLayout rows="auto, *" columns="*" class="mb-4">
+      <Label text="Books read per month" row="0" class="text-center text-muted"></Label>
+      <ListView [items]="monthlyReadCount" row="1" height="200">
+        <ng-template let-item="item">
+          <GridLayout columns="*, auto" class="p-2">
+            <Label [text]="item.month" col="0"></Label>
+            <Label [text]="item.count" col="1"></Label>
+          </GridLayout>
+        </ng-template>
+      </ListView>
+    </GridLayout>
+  </StackLayout>
+</ScrollView>

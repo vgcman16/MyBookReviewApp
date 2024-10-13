@@ -1,0 +1,30 @@
+<GridLayout>
+  <page-router-outlet></page-router-outlet>
+</GridLayout>
+
+<TabView androidTabsPosition="bottom">
+  <TabViewItem title="Search" iconSource="res://search">
+    <page-router-outlet name="searchTab"></page-router-outlet>
+  </TabViewItem>
+  <TabViewItem title="Reading List" iconSource="res://list">
+    <page-router-outlet name="readingListTab"></page-router-outlet>
+  </TabViewItem>
+  <TabViewItem title="Recommendations" iconSource="res://star">
+    <page-router-outlet name="recommendationsTab"></page-router-outlet>
+  </TabViewItem>
+  <TabViewItem title="Challenges" iconSource="res://trophy">
+    <page-router-outlet name="challengesTab"></page-router-outlet>
+  </TabViewItem>
+  <TabViewItem title="Book Clubs" iconSource="res://group">
+    <page-router-outlet name="bookClubsTab"></page-router-outlet>
+  </TabViewItem>
+  <TabViewItem title="Insights" iconSource="res://chart">
+    <page-router-outlet name="insightsTab"></page-router-outlet>
+  </TabViewItem>
+  <TabViewItem title="Quotes" iconSource="res://quote">
+    <page-router-outlet name="quotesTab"></page-router-outlet>
+  </TabViewItem>
+  <TabViewItem title="Profile" iconSource="res://user">
+    <page-router-outlet name="profileTab"></page-router-outlet>
+  </TabViewItem>
+</TabView>
